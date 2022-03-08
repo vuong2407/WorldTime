@@ -1,0 +1,46 @@
+<div class="content-wrapper">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>
+                            <%= currentUser.username %>
+                        </h2>
+                        <ul class="vertical-menu">
+                            <li><a href="/user/profile">Profile</a></li>
+                            <li><a href="/user/create-news">Create News</a></li>
+                            <li><a href="/user/update-news">Illegal News</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 stretch-card grid-margin">
+                <form class="w-100" action="/user/profile/update?_method=PUT" method="POST">
+                    <div class="form-group">
+
+                        <label for="username" class="text-black">Username</label>
+                        <input type="text" id="username" class="form-control" placeholder="username" name="username"
+                            value="<%- currentUser.username %>" required>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email" class="text-black">Email</label>
+                        <input type="text" id="email" class="form-control" placeholder="email" name="email"
+                            value="<%- currentUser.email %>" required>
+                    </div>
+                    <!-- <div class=" form-group">
+                        <label for="image" class="text-black">Upload Avatar</label>
+                        <input type="file" name="image" id="image" class="form-control-file text-white">
+                    </div> -->
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

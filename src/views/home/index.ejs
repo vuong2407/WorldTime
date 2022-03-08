@@ -1,0 +1,161 @@
+<% page=page%>
+    <% totalPage=totalPage %>
+        <div class="flash-news-banner">
+            <div class="container">
+                <div class="d-lg-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-dark mr-3">Flash news</span>
+                        <p class="mb-0">
+                            Lorem Ipsum has been the industry's standard dummy text ever
+                            since the 1500s.
+                        </p>
+                    </div>
+                    <div class="d-flex">
+                        <span class="mr-3 text-danger">Thank you for visiting my website</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 stretch-card grid-margin">
+                        <div class="position-relative">
+                            <img src="images/dashboard/banner.jpg" alt="banner" class="img-fluid" />
+                            <div class="banner-content">
+                                <div class="badge badge-danger fs-12 font-weight-bold mb-3">
+                                    global news
+                                </div>
+                                <h1 class="mb-2">
+                                    Coronavirus Outbreak LIVE Updates: ICSE, CBSE Exams
+                                    Postponed, 168 Trains
+                                </h1>
+                                <div class="fs-12">
+                                    <span class="mr-2">Photo </span>10 Minutes ago
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 stretch-card grid-margin">
+                        <div class="card bg-dark text-white">
+                            <div class="card-body">
+                                <h2>Latest news</h2>
+
+                                <% lastNews.forEach(function(news) { %>
+                                    <div
+                                        class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
+                                        <div class="pr-3 w-100">
+                                            <div class="row">
+                                                <div class="col-sm-7">
+                                                    <h5 class="title-last-news">
+                                                        <a class="text-white" href="/news/<%= news._id %>">
+                                                            <%= news.newsSubscribed.title %>
+                                                        </a>
+                                                    </h5>
+                                                    </a>
+                                                    <div class="fs-12">
+                                                        <span class="mr-2">
+                                                            <%= news.newsSubscribed.author %>
+                                                        </span>10 Minutes ago
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <div class="rotate-img w-75">
+                                                        <img src="/uploads/imageNews/<%= news.newsSubscribed.image %>"
+                                                            alt="thumb" class="img-fluid img-lg" />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2>Category</h2>
+                                <ul class="vertical-menu">
+                                    <li><a href="#">Politics</a></li>
+                                    <li><a href="#">International</a></li>
+                                    <li><a href="#">Finance</a></li>
+                                    <li><a href="#">Health care</a></li>
+                                    <li><a href="#">Technology</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Media</a></li>
+                                    <li><a href="#">Administration</a></li>
+                                    <li><a href="#">Sports</a></li>
+                                    <li><a href="#">Game</a></li>
+                                    <li><a href="#">Art</a></li>
+                                    <li><a href="#">Kids</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 stretch-card grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <% listNews.forEach(function(news) { %>
+                                    <div class="row">
+                                        <div class="col-sm-4 grid-margin">
+                                            <div class="position-relative">
+                                                <div class="rotate-img">
+                                                    <img src="/uploads/imageNews/<%= news.newsSubscribed.image %>"
+                                                        alt="thumb" class="img-fluid w-100 h-100" />
+                                                </div>
+                                                <div class="badge-positioned">
+                                                    <span class="badge badge-danger font-weight-bold">Flash
+                                                        news</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8  grid-margin">
+                                            <h2 class="mb-2 font-weight-600">
+                                                <a href="/news/<%= news._id %>">
+                                                    <%= news.newsSubscribed.title %>
+                                                </a>
+                                            </h2>
+                                            <div class="fs-13 mb-2">
+                                                <span class="mr-2">
+                                                    <%= news.newsSubscribed.author %>
+                                                </span>10 Minutes ago
+                                            </div>
+                                            <p class="mb-0">
+                                                <%= news.newsSubscribed.sdescription %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 stretch-card grid-margin"></div>
+                    <div class="col-lg-9 stretch-card grid-margin d-fllex justify-content-center">
+                        <div class="pagination">
+                            <a href="/?page=1" class="pagination-page">&laquo;</a>
+                            <% for (let i=0; i < totalPage; i++) { %>
+                                <a href="<%= `/?page=${i+1}` %>" class="pagination-page-<%= i+1 %>">
+                                    <%= i+1 %>
+                                </a>
+                                <% } %>
+                                    <a href="<%= `/?page=${totalPage}` %>">&raquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            console.log('<%-totalPage%>')
+            const page = '<%-page%>'
+            const pageActiveElement = document.querySelector(".row .pagination .active")
+            if (pageActiveElement) pageActiveElement.classList.remove("active")
+            const pageElement = document.querySelector(`.row .pagination-page-${page}`)
+            pageElement.classList.add("active")
+        </script>
